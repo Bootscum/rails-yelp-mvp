@@ -1,0 +1,15 @@
+hello
+<ul>
+  <%= link_to "Would you like to add a restaurant",  new_restaurant_path, class: "btn btn-primary" %>
+  <% @restaurants.each do |rest| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h2><%= rest.name %></h2>
+        <li><%= rest.catagory %></li>
+
+        <a class="btn" href=""><%= link_to "See Details", restaurant_path(rest), class: "btn btn-primary"%></a>
+        <%# <%= raise %>
+      </div>
+    </div>
+  <% end %>
+</ul>

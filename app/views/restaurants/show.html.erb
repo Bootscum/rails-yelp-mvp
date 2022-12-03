@@ -1,0 +1,30 @@
+
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+          <li><%= @restaurant.phone_number %></li>
+          <li><%= @restaurant.address %></li>
+
+  <%= link_to "Home Page", restaurants_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_restaurant_path, class: "btn btn-primary" %>
+  <%= link_to 'Delete',  restaurant_path(@restaurant), class: "btn btn-primary",
+    data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <br>
+
+
+  <h2>Would you like to add a review?</h2>
+  <%= link_to "Review",  new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+  <br>
+
+
+
+  <p><strong>Reviews</strong></p>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <strong><li class="list-group-item"><%= review.title %></li></strong>
+      <li class="list-group-item"><%= review.body %></li>
+    <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary"  %>
+    <% end %>
+  </ul>
+
+</div>
